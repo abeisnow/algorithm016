@@ -4,20 +4,38 @@
 ****
 # Git和GitHub使用
 
-		由于工作的原因，以前没有使用Git和GitHub，此次学习过程中顺便学习了这两个工具的使用，感觉赚到了。虽然老师说了总结不要记流水账，但是我觉得这个总结不单单是交的作业也是自己学习的札记。所以可能还是会比较琐碎的记录我所学到的内容，方便自己日后整理。
+由于工作的原因，以前没有使用Git和GitHub，此次学习过程中顺便学习了这两个工具的使用，感觉赚到了。虽然老师说了总结不要记流水账，但是我觉得这个总结不单单是交的作业也是自己学习的札记。所以可能还是会比较琐碎的记录我所学到的内容，方便自己日后整理。
 
 ## Git的安装和配置
 
-		由于工作的关系，我使用的操作系统都是windows的，因此安装就直接安装windows版本的Git就好。安装了Git后就会有Git Bash方便进行操作。进入Git Bash后目录跟Windows不一样比如我的目录在`e:\homework`,在Git Bash中就是`cd /e/homework`。使用`git init`命令来进行仓库的初始化操作。然后使用`git config --global user.name "username"`来设置用户名称。`git config --global user.email "abei1@163.com" ` 来设置仓库的邮箱。使用`git config --global --list`来查看配置信息。
+由于工作的关系，我使用的操作系统都是windows的，因此安装就直接安装windows版本的Git就好。安装了Git后就会有Git Bash方便进行操作。进入Git Bash后目录跟Windows不一样比如我的目录在`e:\homework`,在Git Bash中就是`cd /e/homework`。使用`git init`命令来进行仓库的初始化操作。然后使用`git config --global user.name "username"`来设置用户名称。`git config --global user.email "abei1@163.com" ` 来设置仓库的邮箱。使用`git config --global --list`来查看配置信息。
 
 ## Git和GitHub的关联
 
-		首先fork我们作业的仓库。然后在本地Git Bash中进入我的仓库，然后输入`git remote`命令来设置远端仓库的对应表。具体命令如下`git remote add origin git@github.com:abeisnow/algorithm016.git` 后面的SSH地址是在仓库的Code按钮下找的。使用`git remote`来查看是否设置成功。使用`ssh-keygen`来生成公私钥对，具体命令如下`ssh-keygen -t rsa -C "abei1@163.com"` 根据返回信息找到公钥数据，然后去github中进行设置。在SSH and GPG keys中填写我们的公钥。使用`SSH -T git@github.com`来验证绑定是否成功。本地使用`git add .`来将自己修改的内容上传至本地缓存区，然后使用`git commit -m "remark"`来进行提交。最后使用`git push -u origin master`将自己修改的结果push到远程仓库。也可以用`git pull homework master`拉取远程仓库的内容。第一次关联后可以使用`git clone git@github.com:abeisnow/algorithm016.git`来进行版本初始化，将远端仓库内容直接拿到本地。
+首先fork我们作业的仓库。然后在本地Git Bash中进入我的仓库，然后输入`git remote`命令来设置远端仓库的对应表。具体命令如下`git remote add origin git@github.com:abeisnow/algorithm016.git` 后面的SSH地址是在仓库的Code按钮下找的。使用`git remote`来查看是否设置成功。使用`ssh-keygen`来生成公私钥对，具体命令如下`ssh-keygen -t rsa -C "abei1@163.com"` 根据返回信息找到公钥数据，然后去github中进行设置。在SSH and GPG keys中填写我们的公钥。使用`SSH -T git@github.com`来验证绑定是否成功。本地使用`git add .`来将自己修改的内容上传至本地缓存区，然后使用`git commit -m "remark"`来进行提交。最后使用`git push -u origin master`将自己修改的结果push到远程仓库。也可以用`git pull homework master`拉取远程仓库的内容。第一次关联后可以使用`git clone git@github.com:abeisnow/algorithm016.git`来进行版本初始化，将远端仓库内容直接拿到本地。
 	
 ****
 
 # 数组、链表、跳表的基本实现和特性
 
+重新理解了数组和链表，新学了跳表这个概念。首先数组的插入和删除都需要移动后续内容以保证连续性，导致数组的插入删除操作效率较低。因此在后续程序设计的过程中要充分考虑这个问题。链表的学习过程中对链表的这类数据结构的操作有了更深的理解。首先在插入和删除过程中都是o(1)的，只是在查找过程中是o(n)的。这个数据结构在我本身的工作中应用较少，做题过程中感觉链表这种数据结构使用递归的确可以代码更简洁，更好理解。
+
+****
+
 # 栈和队列的实现与特性
 
+栈和队列这两种数据结构在我工作中比较少的用到，栈基本不用，队列基本上使用中间件完成，不会手写代码完成。因此了解真的不是很多，在这个过程中学到最多的其实是双端队列`Deque`和`PriorityQueue`这两个数据结构。在实际的工作中Deque应用可能更少些，但是PriorityQueue可能会更多一些。在我们所在的短信发送场景中，经常有动态密码短信和动账通知短信。这两种短信要求的优先级是有区别的，其实就可以用`PriorityQueue`的方案进行解决。
+
+****
+
 # 总结
+
+## 五毒神掌
+
+五毒神掌其实是一个重复记忆的方案，看算法题解的时候真的觉得自己会了，可是操作过程中却发现自己其实没有记住很多的细节。程序的bug往往都在细节中，能解决这些的办法其实就是重复的刻意化的训练。周二以前把视频都看完了，可是今天再看发现还是忘掉了很多东西。所以不停的看才是解决这类问题的最好办法。做题也是一样的，刷题真心的是无二法门。
+
+****
+
+## 算法学习相关。
+
+这几天下来的算法学习真心是有些力不从心，因为自己小孩多导致了学习时间非常的散。但是这些都不是接口，我发现我渐渐的习惯了早起和晚睡，在小孩们都谁去的时候去学习。感觉回到了自己年轻时候的样子。这感觉真好。一周下来学习了数组的夹逼，双指针。链表的递归操作。基本上我看的解法都围绕这些展开，目的是熟悉一种解决问题的方式，即便不是最优的解法，但是保证自己能用这几种解法解决问题并且复杂度也不算差。另外递归算法的缓存机制真心是以前没有想过的，这次总算领教了厉害。的确可以帮助我解决很大的问题。我打算在后续事件内做更详细的笔记，记录这些算法后去给我的同事讲解，从讲解中给自己一个提高的机会。毕竟如果我能给别人讲清楚，估计我也就可以收官了。
